@@ -1,24 +1,6 @@
 import { useState } from "react";
 
-const initialValues = {
-  initialInvestment: "",
-  annualInvestment: "",
-  expectedReturn: "",
-  duration: "",
-};
-
-export default function UserInput() {
-  const [inputValues, setInputValues] = useState(initialValues);
-
-  function handleInputChange(event) {
-    setInputValues({
-      ...inputValues,
-      [event.target.name]: event.target.value,
-    });
-  }
-
-  console.log(inputValues);
-
+export default function UserInput({ onChangeInput, inputValues }) {
   return (
     <section id="user-input">
       <div className="input-group">
@@ -28,7 +10,7 @@ export default function UserInput() {
             type="number"
             name="initialInvestment"
             value={inputValues.initialInvestment}
-            onChange={handleInputChange}
+            onChange={onChangeInput}
           />
         </p>
         <p>
@@ -37,7 +19,7 @@ export default function UserInput() {
             type="number"
             name="annualInvestment"
             value={inputValues.annualInvestment}
-            onChange={handleInputChange}
+            onChange={onChangeInput}
           />
         </p>
       </div>
@@ -48,7 +30,7 @@ export default function UserInput() {
             type="number"
             name="expectedReturn"
             value={inputValues.expectedReturn}
-            onChange={handleInputChange}
+            onChange={onChangeInput}
           />
         </p>
         <p>
@@ -57,7 +39,7 @@ export default function UserInput() {
             type="number"
             name="duration"
             value={inputValues.duration}
-            onChange={handleInputChange}
+            onChange={onChangeInput}
           />
         </p>
       </div>
