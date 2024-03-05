@@ -21,11 +21,16 @@ function App() {
     });
   }
 
+  const inputIsValid = inputValues.duration >= 1;
+
   return (
     <>
       <Header />
       <UserInput onChangeInput={handleInputChange} inputValues={inputValues} />
-      <ResultsTable results={inputValues} />
+      {!inputIsValid && (
+        <p className="center">Enter a valid duration number.</p>
+      )}
+      {inputIsValid && <ResultsTable results={inputValues} />}
     </>
   );
 }
